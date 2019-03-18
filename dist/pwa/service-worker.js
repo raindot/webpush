@@ -1,30 +1,29 @@
-importScripts("precache-manifest.03f318bf4614ad34f266ba01f6004d5e.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
-
-/*
- * This file (which will be your service worker)
- * is picked up by the build system ONLY if
- * quasar.conf > pwa > workboxPluginMode is set to "InjectManifest"
+/**
+ * Welcome to your Workbox-powered service worker!
+ *
+ * You'll need to register this file in your web app and you should
+ * disable HTTP caching for this file too.
+ * See https://goo.gl/nhQhGp
+ *
+ * The rest of the code is auto-generated. Please don't update this file
+ * directly; instead, make changes to your Workbox build configuration
+ * and re-run your build process.
+ * See https://goo.gl/2aRDsh
  */
 
-// Listen to Push
-self.addEventListener('push', (e) => {
-  let data
-  if (e.data) {
-      data = e.data.json()
-  }
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
-  console.log('data for notification', data);
+importScripts(
+  "precache-manifest.3c5f2bbab43942ab093577d67b031b50.js"
+);
 
-  const options = {
-      body: data.body,
-      // icon: '/img/icons/android-chrome-192x192.png',
-      // image: '/img/autumn-forest.png',
-      vibrate: [300, 200, 300],
-      // badge: '/img/icons/plint-badge-96x96.png',
-  }
+workbox.core.setCacheNameDetails({prefix: "quasar-v1"});
 
-  console.log('options passed to Notification', options);
-
-  e.waitUntil(self.registration.showNotification(data.title, options))
-})
-
+/**
+ * The workboxSW.precacheAndRoute() method efficiently caches and responds to
+ * requests for URLs in the manifest.
+ * See https://goo.gl/S9QRab
+ */
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
+workbox.precaching.suppressWarnings();
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});

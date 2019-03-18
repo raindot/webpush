@@ -81,10 +81,10 @@ module.exports = function (ctx) {
     },
 
     pwa: {
-      workboxPluginMode: 'InjectManifest',
-      workboxOptions: {
-        swSrc: 'src-pwa/custom-service-worker.js',
-      },
+      // workboxPluginMode: 'InjectManifest',
+      // workboxOptions: {
+      //   swSrc: 'src-pwa/custom-service-worker.js',
+      // },
       manifest: {
         // name: 'Quasar App',
         // short_name: 'Quasar-PWA',
